@@ -35,4 +35,4 @@ Adding in real time invites.
 Add a way to auto link users discorc usernames into their profile to enhance the discord chat feature.
 
 ## Demo
-![Demo](public/videos/demo.mp4)
+![DEMO](https://www.youtube.com/watch?v=rdVEIs_T4vM&feature=youtu.be)
