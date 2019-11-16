@@ -1,6 +1,7 @@
 require("dotenv").config();
 var express = require("express");
 var exphbs = require("express-handlebars");
+var path = require("path");
 var env = process.env.NODE_ENV || "development";
 var config = require(__dirname + "/config/config.json")[env];
 
@@ -25,18 +26,14 @@ app.use(express.json());
 app.use(express.static("public"));
 
 // Middleware for Authentication
-var options;
-if (process.env.JAWSDB_URL) {
-  options = process.env.JAWSDB_URL;
-} else {
-  options = {
-    host: config.host,
+  var options = {
+    host: "kavfu5f7pido12mr.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     port: 3306,
-    user: config.username,
-    password: config.password,
-    database: config.database
+    user: "duj3hj41l7leydji",
+    password: "osa5lial2f22x1nl",
+    database: "c3reychmec54nnqc"
   }
-}
+
 var sessionStore = new MySQLStore(options);
 app.use(session({
   // Secret should be a random string
@@ -44,8 +41,11 @@ app.use(session({
   resave: false,
   store: sessionStore,
   saveUninitialized: false,
+  cookie: {
+    maxAge: 24 * 60 * 60 * 1000 // 24 hours
+  }
   // If using HTTPS make sure to uncomment the line below *
-  cookie: { secure: true }
+  // cookie: { secure: true }
 }));
 app.use(passport.initialize());
 app.use(passport.session());
